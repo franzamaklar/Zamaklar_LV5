@@ -33,9 +33,11 @@ Route::get('/updateusers', [App\Http\Controllers\UserController::class, 'updatei
 
 Route::get('/updaterole/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 
+Route::post('/edituser', [App\Http\Controllers\UserController::class, 'editUser'])->name('user.edit');
+
 Route::get('/tasks', [App\Http\Controllers\TasksController::class, 'index'])->name('tasks');
 
-Route::get('/addtask', [App\Http\Controllers\TasksController::class, 'store'])->name('addtask');
+Route::post('/addtask', [App\Http\Controllers\TasksController::class, 'store'])->name('addtask');
 
 Route::get('/createtask', function(){return view('createtask');})->name('createtask');
 

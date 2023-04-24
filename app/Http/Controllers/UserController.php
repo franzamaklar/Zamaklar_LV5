@@ -19,11 +19,17 @@ class UserController extends Controller
     }
 
     public function update($id){
-        $userWithNewRole = User::find($id);
-        $userWithNewRole->role = "Profesor";
+        $userForNewRole = User::find($id);
+
+        return view('edituser', compact('userForNewRole'));
+    }
+
+    public function editUser(Request $request){
+        $userWithNewRole = User::find($request->input('id'));
+        $userWithNewRole->__set('role', $request->new_role);
 
         $userWithNewRole->save();
 
-        return redirect('/dashboard');
+        return redirect('/updateusers');
     }
 }

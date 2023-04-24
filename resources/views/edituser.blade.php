@@ -11,32 +11,33 @@
     </p>
     <p class="mb-3 mt-5 text-center"><b>MEMBERS</u></b></p>
     <br>
-    <div class="container-md mt-5 text-center">
+    <form method="POST" action="{{  route('user.edit') }}" >
+    <input type="hidden" name="id" value="{{ $userForNewRole->id }}">
+    {{ csrf_field() }}
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Current Role</th>
+                <th scope="col">Current Role:</th>
+                <th scope="col">New Role:</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($updateUsers as $data)
-            @if($data->id != Auth::user()->id && $data->role != 'admin')
             <tr>
-                <td>{{ $data->id}}</td>
-                <td>{{ $data->name }}</td>
-                <td>{{ $data->role }}</td>
-                <td>
-                    <a href="{{ route('user.update', $data->id) }}" class="ml-4 btn btn-secondary p-0" role="button">Update</a>  
-                    </td>
+                <td>{{ $userForNewRole->role }}</td>
+                <td> 
+                    <div>
+                        <select name="new_role" id="new_role" class="block mt-1 w-full">
+                        <option value="Profesor">Profesor</option>
+                        <option value="Student">Student</option>
+                        </select>
+                    </div>
                 </td>
             </tr>
-            @endif
-            @endforeach
         </tbody>
-    </table>
-    </form>
-</div>
+</table>
+    <div class="form-group">
+                <input type="submit" class="btn btn-primary bg-primary" value="Save">
+            </div>
+</form>
 </x-guest-layout>
 </html>

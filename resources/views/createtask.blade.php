@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-
     <head>
+    <title>LV5</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
 <x-guest-layout>
@@ -10,10 +10,10 @@
     </p>
 <div class="container-fluid mt-5 text-center">
         <p class="mt-5 mb-3"><b>Create new task</b></p>
-        <form action="{{ url('/addtask') }}" method="PUT">
+        <form action="{{ url('/addtask') }}" method="POST">
             <div class="form-group w-100">
             @csrf
-            @method('PUT')
+            @method('POST')
                 <input class="mx-1 mt-2 mb-2" type="text" name="name" id="name" placeholder="Name">
                 <input class="mx-1 mt-2 mb-2" type="text" name="subject" id="subject" placeholder="Subject">
                 <select class="mx-1 mt-2 mb-2" type="text" name="facultytype" id="facultytype">
