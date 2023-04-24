@@ -47,3 +47,10 @@ Route::get('/aceepttask/{id}', [App\Http\Controllers\TasksController::class, 'ac
 
 Route::get('/declinetask/{id}', [App\Http\Controllers\TasksController::class, 'decline'])->name('task.decline');
 
+Route::get('/createtask/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
+    
+    return view('createtask');
+});
